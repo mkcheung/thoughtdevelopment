@@ -1,0 +1,17 @@
+#controllers:
+#    resource: ../../src/Controller/
+#    type: annotation
+
+auth:
+    resource: ../../src/Controller/
+    type: annotation
+    prefix: /api/auth
+    defaults:
+        _format: json
+
+goodreads:
+    resource: ../../src/Controller/
+    type: annotation
+    prefix: /api/goodreads
+    defaults:
+        _format: json
