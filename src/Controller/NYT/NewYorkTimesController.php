@@ -15,8 +15,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use App\Entity\ResearchUser;
 use Symfony\Component\Routing\Annotation\Route;
+use GuzzleHttp\Client as GuzzleClient;
 
-class GoodreadsController extends AbstractController
+class NewYorkTimesController extends AbstractController
 {
 
     protected $requestErrors = [];
@@ -34,7 +35,19 @@ class GoodreadsController extends AbstractController
      * @Route("/notes", methods={"GET"}, name="get_notes")
      */
     public function getNotesAction(Request $request){
-        var_dump("I'm in");die;
+
+        $client = new GuzzleClient();
+
+//        $headers = [
+//            'key' => $this->getParameter('ny_times_key')
+//        ];
+
+//        $res = $client->request('GET', 'https://www.goodreads.com/shelf/list.xml ', [
+//            'headers' => $headers
+//        ]);
+
+        $res = $client->request('GET', 'http://api.nytimes.com/svc/archive/v1/2016/11.json?api-key='.$this->getParameter('ny_times_key'));
+        var_dump($res);die;
     }
 
 }
